@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environment & IDE
+.env
+.venv
+env/
+venv/
+.vscode/
+.idea/
+
+# Database & Cache
+*.db
+*.sqlite3
+second_mind.db
+audio_cache/
+.pytest_cache/
+
+# Sensitive Caregiver Files (must not be committed to public git)
+profile_setup.json
+schedule_setup.json
