@@ -145,9 +145,6 @@ export default function ClubsSection() {
   };
 
   const bgColor = selectedClub ? (BACKGROUND_COLORS[selectedClub.id] || selectedClub.bgCard) : "#EFE4D2";
-  
-  // Adjusted center circle diameter to be slightly smaller to leave more spacing/breathing room
-  // Desktop: 1.12 * radius, Mobile: 1.2 * radius
   const centerCircleDiameter = radius * (isMobile ? 1.2 : 1.12);
 
   return (
@@ -278,12 +275,13 @@ export default function ClubsSection() {
             })}
           </motion.div>
 
-          {/* Central Hub Area (Slightly smaller to leave spacing/breathing room) */}
+          {/* Central Hub Area */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
             <div 
               style={{ width: centerCircleDiameter, height: centerCircleDiameter }}
-              className="rounded-full flex flex-col items-center justify-center text-center p-6 md:p-8 bg-[#F5EAD8] border-4 border-[#20232C] shadow-[12px_12px_0px_0px_#20232C] pointer-events-auto overflow-hidden relative transition-all duration-500"
+              className="rounded-full flex flex-col items-center justify-center text-center p-4 md:p-8 bg-[#F5EAD8] border-4 border-[#20232C] shadow-[12px_12px_0px_0px_#20232C] pointer-events-auto overflow-hidden relative transition-all duration-500"
             >
+              
               <motion.div
                 className="absolute inset-2 rounded-full border-2 border-dotted border-[#20232C]/10 pointer-events-none"
                 animate={{ rotate: -360 }}
@@ -320,6 +318,7 @@ export default function ClubsSection() {
                     transition={{ type: "spring", stiffness: 80, damping: 15 }}
                     className="flex flex-col items-center w-full h-full justify-between py-1"
                   >
+                    {/* ALWAYS SHOW: Emblem and Club Name */}
                     <div className="flex flex-col items-center">
                       <div className="scale-[0.65] md:scale-90 -mb-3 md:mb-1.5">
                         {getClubEmblem(selectedClub.id)}
@@ -327,31 +326,35 @@ export default function ClubsSection() {
                       <h3 className="text-base md:text-2xl font-black text-[#20232C] font-serif-heading leading-tight mb-1 text-balance">
                         {selectedClub.name}
                       </h3>
-                      <p className="text-[9px] md:text-xs font-bold text-[#A74C22] uppercase tracking-wide">
+                      {/* Hide Tagline on Mobile */}
+                      <p className="hidden md:block text-[9px] md:text-xs font-bold text-[#A74C22] uppercase tracking-wide">
                         {selectedClub.tagline}
                       </p>
                     </div>
 
-                    <p className="text-[9px] md:text-xs font-semibold text-[#20232C]/90 line-clamp-2 md:line-clamp-3 px-3 leading-relaxed">
+                    {/* DESKTOP ONLY: Description */}
+                    <p className="hidden md:block text-[9px] md:text-xs font-semibold text-[#20232C]/90 line-clamp-2 md:line-clamp-3 px-3 leading-relaxed">
                       {selectedClub.description}
                     </p>
 
-                    <div className="flex gap-2 text-[8px] md:text-[9px] font-black uppercase bg-[#F5EAD8] border-2 border-[#20232C] text-[#20232C] px-2 py-0.5 md:px-3 md:py-1 rounded-lg neo-shadow-sm">
+                    {/* DESKTOP ONLY: Stats */}
+                    <div className="hidden md:flex gap-2 text-[8px] md:text-[9px] font-black uppercase bg-[#F5EAD8] border-2 border-[#20232C] text-[#20232C] px-2 py-0.5 md:px-3 md:py-1 rounded-lg neo-shadow-sm">
                       <span>{selectedClub.stats.members} Mem</span>
                       <span className="text-[#C86B1F]">•</span>
                       <span>{selectedClub.stats.events} Evt</span>
                     </div>
 
-                    <div className="flex items-center gap-2 w-full justify-center px-1 md:px-4">
+                    {/* DESKTOP ONLY: Socials + Details Button */}
+                    <div className="hidden md:flex items-center gap-2 w-full justify-center px-1 md:px-4">
                       <div className="flex gap-1">
                         <a href={selectedClub.website} target="_blank" rel="noreferrer" className="w-6 h-6 md:w-8 md:h-8 bg-white border-2 border-[#20232C] rounded-lg flex items-center justify-center neo-shadow-sm hover:bg-[#C86B1F] hover:text-white transition-colors">
-                          <Globe className="w-3 h-3 md:w-3.5 md:h-3.5" strokeWidth={2.5} />
+                          <Globe className="w-3.5 h-3.5" strokeWidth={2.5} />
                         </a>
                         <a href={selectedClub.instagram} target="_blank" rel="noreferrer" className="w-6 h-6 md:w-8 md:h-8 bg-white border-2 border-[#20232C] rounded-lg flex items-center justify-center neo-shadow-sm hover:bg-[#C86B1F] hover:text-white transition-colors">
-                          <InstagramIcon className="w-3 h-3 md:w-3.5 md:h-3.5" />
+                          <InstagramIcon className="w-3.5 h-3.5" />
                         </a>
                         <a href={selectedClub.linkedin} target="_blank" rel="noreferrer" className="w-6 h-6 md:w-8 md:h-8 bg-white border-2 border-[#20232C] rounded-lg flex items-center justify-center neo-shadow-sm hover:bg-[#C86B1F] hover:text-white transition-colors">
-                          <LinkedinIcon className="w-3 h-3 md:w-3.5 md:h-3.5" />
+                          <LinkedinIcon className="w-3.5 h-3.5" />
                         </a>
                       </div>
                       <button
@@ -359,6 +362,16 @@ export default function ClubsSection() {
                         className="flex-1 bg-[#20232C] text-[#F5EAD8] border-2 border-[#20232C] font-black uppercase text-[8px] md:text-[9px] py-1 md:py-1.5 rounded-lg hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_#C86B1F] transition-all flex items-center justify-center gap-1"
                       >
                         <Eye className="w-3 h-3" /> Details
+                      </button>
+                    </div>
+
+                    {/* MOBILE ONLY: Simple Details Button right below name */}
+                    <div className="flex md:hidden items-center justify-center w-full mt-2">
+                      <button
+                        onClick={() => setModalClub(selectedClub)}
+                        className="bg-[#20232C] text-[#F5EAD8] border-2 border-[#20232C] font-black uppercase text-[10px] px-6 py-2 rounded-lg hover:shadow-[3px_3px_0px_0px_#C86B1F] transition-all flex items-center justify-center gap-1.5 pointer-events-auto active:translate-y-0.5 active:shadow-none"
+                      >
+                        <Eye className="w-3.5 h-3.5" /> Details
                       </button>
                     </div>
                   </motion.div>
