@@ -103,7 +103,7 @@ export const CLUBS_DATA: Club[] = [
     },
     openRoles: ["Smart Contract Auditor", "Web3 Frontend Developer", "Community Builder"],
     recruitmentDeadline: "August 25, 2026",
-    recruitmentFormUrl: "https://forms.gle/dao-2026",
+    recruitmentFormUrl: "https://tally.so/r/aQXXjB",
   },
   {
     id: "cyscom",
