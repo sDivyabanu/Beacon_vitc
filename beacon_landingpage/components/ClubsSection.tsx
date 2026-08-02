@@ -28,6 +28,7 @@ export default function ClubsSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
+  const [radius, setRadius] = useState(280); // Dynamic fallback
   
   const sectionRef = useRef<HTMLElement>(null);
   const wheelRef = useRef<HTMLDivElement>(null);
@@ -37,10 +38,24 @@ export default function ClubsSection() {
   const dragHasMoved = useRef(false);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize();
+    const handleResize = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      
+      if (wheelRef.current) {
+        const width = wheelRef.current.getBoundingClientRect().width;
+        // Keep orbit circles spread out (43% of container)
+        const multiplier = mobile ? 0.40 : 0.43;
+        setRadius(width * multiplier);
+      }
+    };
+    
+    const timer = setTimeout(handleResize, 100);
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(timer);
+    };
   }, []);
 
   const getSelectedIdx = () => {
@@ -130,7 +145,10 @@ export default function ClubsSection() {
   };
 
   const bgColor = selectedClub ? (BACKGROUND_COLORS[selectedClub.id] || selectedClub.bgCard) : "#EFE4D2";
-  const radius = isMobile ? 150 : 290;
+  
+  // Adjusted center circle diameter to be slightly smaller to leave more spacing/breathing room
+  // Desktop: 1.12 * radius, Mobile: 1.2 * radius
+  const centerCircleDiameter = radius * (isMobile ? 1.2 : 1.12);
 
   return (
     <section
@@ -155,7 +173,6 @@ export default function ClubsSection() {
           <h2 className="text-3xl sm:text-5xl font-serif-heading font-black text-[#20232C] tracking-tight leading-tight mb-2">
             Choose Your Community
           </h2>
-          {/* Subtle instruction helper text placed right under the main heading */}
           <p className="text-[10px] md:text-xs font-bold text-[#A74C22]/70 uppercase tracking-widest pointer-events-none">
             Drag to Rotate • Scroll to Cycle
           </p>
@@ -171,7 +188,7 @@ export default function ClubsSection() {
           onTouchStart={handleDragStart}
           onTouchMove={handleDragMove}
           onTouchEnd={handleDragEnd}
-          className="relative flex items-center justify-center w-full max-w-[750px] aspect-square cursor-grab active:cursor-grabbing"
+          className="relative flex items-center justify-center w-full max-w-[720px] aspect-square cursor-grab active:cursor-grabbing"
         >
           {/* Dashed Orbit Ring */}
           <motion.div
@@ -210,7 +227,7 @@ export default function ClubsSection() {
                   <motion.div
                     animate={{ 
                       rotate: -rotationOffset, // Counter-rotate node content to stay upright
-                      scale: isHovered ? 1.4 : isSelected ? 1.15 : 1,
+                      scale: isHovered ? 1.35 : isSelected ? 1.15 : 1,
                       z: isHovered ? 50 : 0
                     }}
                     transition={{ type: "spring", stiffness: 100, damping: 15 }}
@@ -223,23 +240,23 @@ export default function ClubsSection() {
                       onClick={() => selectIndex(index)}
                       className={`
                         flex flex-col items-center justify-center gap-1.5 
-                        w-20 h-20 md:w-28 md:h-28 rounded-full 
+                        w-[76px] h-[76px] md:w-24 md:h-24 rounded-full 
                         border-[3px] border-[#20232C] bg-[#F5EAD8]
                         transition-all duration-300
-                        ${isSelected ? 'shadow-[8px_8px_0px_0px_#20232C] border-b-4' : 'neo-shadow-sm'}
+                        ${isSelected ? 'shadow-[6px_6px_0px_0px_#20232C] border-b-4' : 'neo-shadow-sm'}
                       `}
                       style={{
                         backgroundColor: isSelected ? club.badgeBg : "#F5EAD8",
                       }}
                     >
                       {/* Emblem */}
-                      <div className="scale-75 md:scale-95 flex items-center justify-center transition-transform">
+                      <div className="scale-[0.7] md:scale-90 flex items-center justify-center transition-transform">
                         {getClubEmblem(club.id)}
                       </div>
 
                       {/* Dot symbol indicator & label */}
                       <span className={`
-                        text-[8px] md:text-[10px] font-black uppercase px-2 py-0.5 rounded border-2 flex items-center gap-1
+                        text-[7px] md:text-[9px] font-black uppercase px-1.5 py-0.5 rounded border-2 flex items-center gap-1
                         ${isSelected ? 'border-transparent text-[#F5EAD8] bg-[#20232C]' : 'border-[#20232C] text-[#20232C] bg-white'}
                       `}>
                         <span>{isHovered || isSelected ? '◉' : '○'}</span>
@@ -261,10 +278,12 @@ export default function ClubsSection() {
             })}
           </motion.div>
 
-          {/* Central Hub Area */}
+          {/* Central Hub Area (Slightly smaller to leave spacing/breathing room) */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
-            <div className="w-[260px] h-[260px] md:w-[410px] md:h-[410px] rounded-full flex flex-col items-center justify-center text-center p-6 md:p-10 bg-[#F5EAD8] border-4 border-[#20232C] shadow-[12px_12px_0px_0px_#20232C] pointer-events-auto overflow-hidden relative">
-              
+            <div 
+              style={{ width: centerCircleDiameter, height: centerCircleDiameter }}
+              className="rounded-full flex flex-col items-center justify-center text-center p-6 md:p-8 bg-[#F5EAD8] border-4 border-[#20232C] shadow-[12px_12px_0px_0px_#20232C] pointer-events-auto overflow-hidden relative transition-all duration-500"
+            >
               <motion.div
                 className="absolute inset-2 rounded-full border-2 border-dotted border-[#20232C]/10 pointer-events-none"
                 animate={{ rotate: -360 }}
@@ -278,16 +297,16 @@ export default function ClubsSection() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
-                    className="flex flex-col items-center gap-3"
+                    className="flex flex-col items-center gap-2"
                   >
-                    <div className="w-16 h-16 md:w-20 md:h-20 bg-[#20232C] text-[#EFE4D2] rounded-2xl rotate-3 flex items-center justify-center font-serif-heading font-black text-3xl md:text-5xl border-4 border-[#C86B1F] shadow-[4px_4px_0px_0px_#A74C22]">
+                    <div className="w-14 h-14 md:w-20 md:h-20 bg-[#20232C] text-[#EFE4D2] rounded-2xl rotate-3 flex items-center justify-center font-serif-heading font-black text-2xl md:text-5xl border-4 border-[#C86B1F] shadow-[4px_4px_0px_0px_#A74C22]">
                       B
                     </div>
                     <div>
-                      <h3 className="text-xl md:text-3xl font-black text-[#20232C] font-serif-heading tracking-tight uppercase leading-tight">
+                      <h3 className="text-lg md:text-3xl font-black text-[#20232C] font-serif-heading tracking-tight uppercase leading-tight">
                         One Community.
                       </h3>
-                      <p className="text-sm md:text-lg font-bold text-[#A74C22]">
+                      <p className="text-xs md:text-lg font-bold text-[#A74C22]">
                         Seven Paths.
                       </p>
                     </div>
@@ -299,47 +318,45 @@ export default function ClubsSection() {
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.9, y: -15 }}
                     transition={{ type: "spring", stiffness: 80, damping: 15 }}
-                    className="flex flex-col items-center w-full h-full justify-between py-2"
+                    className="flex flex-col items-center w-full h-full justify-between py-1"
                   >
                     <div className="flex flex-col items-center">
-                      <div className="scale-75 md:scale-95 -mb-2 md:mb-1.5">
+                      <div className="scale-[0.65] md:scale-90 -mb-3 md:mb-1.5">
                         {getClubEmblem(selectedClub.id)}
                       </div>
-                      <h3 className="text-lg md:text-2xl font-black text-[#20232C] font-serif-heading leading-tight mb-1 text-balance">
+                      <h3 className="text-base md:text-2xl font-black text-[#20232C] font-serif-heading leading-tight mb-1 text-balance">
                         {selectedClub.name}
                       </h3>
-                      <p className="text-[10px] md:text-xs font-bold text-[#A74C22] uppercase tracking-wide">
+                      <p className="text-[9px] md:text-xs font-bold text-[#A74C22] uppercase tracking-wide">
                         {selectedClub.tagline}
                       </p>
                     </div>
 
-                    <p className="text-[9.5px] md:text-sm font-semibold text-[#20232C]/90 line-clamp-2 md:line-clamp-3 px-4 leading-relaxed">
+                    <p className="text-[9px] md:text-xs font-semibold text-[#20232C]/90 line-clamp-2 md:line-clamp-3 px-3 leading-relaxed">
                       {selectedClub.description}
                     </p>
 
-                    <div className="flex gap-2 text-[8px] md:text-[10px] font-black uppercase bg-[#F5EAD8] border-2 border-[#20232C] text-[#20232C] px-3 py-1 rounded-lg neo-shadow-sm">
+                    <div className="flex gap-2 text-[8px] md:text-[9px] font-black uppercase bg-[#F5EAD8] border-2 border-[#20232C] text-[#20232C] px-2 py-0.5 md:px-3 md:py-1 rounded-lg neo-shadow-sm">
                       <span>{selectedClub.stats.members} Mem</span>
                       <span className="text-[#C86B1F]">•</span>
                       <span>{selectedClub.stats.events} Evt</span>
-                      <span className="text-[#C86B1F]">•</span>
-                      <span>{selectedClub.stats.founded}</span>
                     </div>
 
-                    <div className="flex items-center gap-2 w-full justify-center px-2 md:px-4">
+                    <div className="flex items-center gap-2 w-full justify-center px-1 md:px-4">
                       <div className="flex gap-1">
-                        <a href={selectedClub.website} target="_blank" rel="noreferrer" className="w-7 h-7 bg-white border-2 border-[#20232C] rounded-lg flex items-center justify-center neo-shadow-sm hover:bg-[#C86B1F] hover:text-white transition-colors">
-                          <Globe className="w-3.5 h-3.5" strokeWidth={2.5} />
+                        <a href={selectedClub.website} target="_blank" rel="noreferrer" className="w-6 h-6 md:w-8 md:h-8 bg-white border-2 border-[#20232C] rounded-lg flex items-center justify-center neo-shadow-sm hover:bg-[#C86B1F] hover:text-white transition-colors">
+                          <Globe className="w-3 h-3 md:w-3.5 md:h-3.5" strokeWidth={2.5} />
                         </a>
-                        <a href={selectedClub.instagram} target="_blank" rel="noreferrer" className="w-7 h-7 bg-white border-2 border-[#20232C] rounded-lg flex items-center justify-center neo-shadow-sm hover:bg-[#C86B1F] hover:text-white transition-colors">
-                          <InstagramIcon className="w-3.5 h-3.5" />
+                        <a href={selectedClub.instagram} target="_blank" rel="noreferrer" className="w-6 h-6 md:w-8 md:h-8 bg-white border-2 border-[#20232C] rounded-lg flex items-center justify-center neo-shadow-sm hover:bg-[#C86B1F] hover:text-white transition-colors">
+                          <InstagramIcon className="w-3 h-3 md:w-3.5 md:h-3.5" strokeWidth={2.5} />
                         </a>
-                        <a href={selectedClub.linkedin} target="_blank" rel="noreferrer" className="w-7 h-7 bg-white border-2 border-[#20232C] rounded-lg flex items-center justify-center neo-shadow-sm hover:bg-[#C86B1F] hover:text-white transition-colors">
-                          <LinkedinIcon className="w-3.5 h-3.5" />
+                        <a href={selectedClub.linkedin} target="_blank" rel="noreferrer" className="w-6 h-6 md:w-8 md:h-8 bg-white border-2 border-[#20232C] rounded-lg flex items-center justify-center neo-shadow-sm hover:bg-[#C86B1F] hover:text-white transition-colors">
+                          <LinkedinIcon className="w-3 h-3 md:w-3.5 md:h-3.5" strokeWidth={2.5} />
                         </a>
                       </div>
                       <button
                         onClick={() => setModalClub(selectedClub)}
-                        className="flex-1 bg-[#20232C] text-[#F5EAD8] border-2 border-[#20232C] font-black uppercase text-[9px] md:text-[10px] py-1.5 rounded-lg hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_#C86B1F] transition-all flex items-center justify-center gap-1"
+                        className="flex-1 bg-[#20232C] text-[#F5EAD8] border-2 border-[#20232C] font-black uppercase text-[8px] md:text-[9px] py-1 md:py-1.5 rounded-lg hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_#C86B1F] transition-all flex items-center justify-center gap-1"
                       >
                         <Eye className="w-3 h-3" /> Details
                       </button>
