@@ -9,6 +9,24 @@ import { Compass, Sparkles, Layers, RefreshCw } from "lucide-react";
 export default function CollaborationSection() {
   const [activeClub, setActiveClub] = useState<string | null>(null);
 
+  const orbitPositions = CLUBS_DATA.map((club, idx) => {
+    const angle = (idx * 360) / 7 - 90;
+    const rad = (angle * Math.PI) / 180;
+    const orbitRadius = 280;
+    const left = 50 + 35 * Math.cos(rad);
+    const top = 50 + 35 * Math.sin(rad);
+    const x = 400 + orbitRadius * Math.cos(rad);
+    const y = 300 + orbitRadius * Math.sin(rad);
+
+    return {
+      club,
+      left,
+      top,
+      x,
+      y,
+    };
+  });
+
   return (
     <section id="collaboration" className="relative bg-[#EFE4D2] py-20 lg:py-32 px-4 sm:px-6 lg:px-8 border-b-4 border-[#20232C] overflow-hidden">
       {/* Large Geometric Divider / Poster Rays SVG Header */}
@@ -50,14 +68,23 @@ export default function CollaborationSection() {
             <circle cx="400" cy="300" r="140" stroke="#C86B1F" strokeWidth="4" />
             <circle cx="400" cy="300" r="60" stroke="#4D627D" strokeWidth="4" />
 
-            {/* Connecting Diagonal Lines from Center to Nodes */}
-            <line x1="400" y1="300" x2="400" y2="80" stroke="currentColor" strokeWidth="4" />
-            <line x1="400" y1="300" x2="620" y2="170" stroke="currentColor" strokeWidth="4" />
-            <line x1="400" y1="300" x2="650" y2="390" stroke="currentColor" strokeWidth="4" />
-            <line x1="400" y1="300" x2="510" y2="520" stroke="currentColor" strokeWidth="4" />
-            <line x1="400" y1="300" x2="290" y2="520" stroke="currentColor" strokeWidth="4" />
-            <line x1="400" y1="300" x2="150" y2="390" stroke="currentColor" strokeWidth="4" />
-            <line x1="400" y1="300" x2="180" y2="170" stroke="currentColor" strokeWidth="4" />
+            {/* Connecting Lines from Center to Every Club Node */}
+            {orbitPositions.map(({ club, x, y }) => {
+              const isActive = activeClub === club.id;
+              return (
+                <line
+                  key={club.id}
+                  x1="400"
+                  y1="300"
+                  x2={x}
+                  y2={y}
+                  stroke={isActive ? "#C86B1F" : "currentColor"}
+                  strokeWidth={isActive ? 6 : 4}
+                  strokeLinecap="round"
+                  opacity={isActive ? 1 : 0.55}
+                />
+              );
+            })}
           </svg>
 
           {/* Central BEACON Hub Seal */}
@@ -74,16 +101,7 @@ export default function CollaborationSection() {
 
           {/* 7 Orbiting Club Emblem Cards */}
           <div className="absolute inset-0 pointer-events-auto">
-            {CLUBS_DATA.map((club, idx) => {
-              // Angles around circle
-              const angle = (idx * 360) / 7 - 90;
-              const radius = 35; // percentage radius
-              const rad = (angle * Math.PI) / 180;
-
-              // Compute CSS left and top percentages
-              const left = 50 + radius * Math.cos(rad);
-              const top = 50 + radius * Math.sin(rad);
-
+            {orbitPositions.map(({ club, left, top }) => {
               const isHovered = activeClub === club.id;
 
               return (

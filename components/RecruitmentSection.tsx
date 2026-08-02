@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CLUBS_DATA, RecruitmentStatus } from "@/data/clubs";
-import { Clock, ArrowUpRight, CheckCircle, AlertCircle, HelpCircle } from "lucide-react";
+import { Clock, ArrowUpRight, CheckCircle, AlertCircle } from "lucide-react";
 import { getClubEmblem } from "./ClubEmblems";
 
 export default function RecruitmentSection() {
@@ -42,7 +42,7 @@ export default function RecruitmentSection() {
 
           {/* Filter Pills */}
           <div className="flex flex-wrap items-center gap-2 bg-[#EFE4D2] border-3 border-[#20232C] rounded-2xl p-1.5 neo-shadow-sm">
-            {(["All", "Open", "Coming Soon", "Closed"] as const).map((status) => {
+            {(["All", "Open", "Closed"] as const).map((status) => {
               const count =
                 status === "All"
                   ? CLUBS_DATA.length
@@ -79,10 +79,6 @@ export default function RecruitmentSection() {
               if (club.status === "Closed") {
                 statusBg = "#4D627D";
                 statusIcon = <AlertCircle className="w-3.5 h-3.5" />;
-              } else if (club.status === "Coming Soon") {
-                statusBg = "#8797A8";
-                statusText = "#20232C";
-                statusIcon = <HelpCircle className="w-3.5 h-3.5" />;
               }
 
               return (
@@ -137,22 +133,6 @@ export default function RecruitmentSection() {
                       >
                         <div className="p-4 md:p-6 flex flex-col md:flex-row gap-6 justify-between items-start md:items-center">
                           
-                          {/* Left drawer: tracks list */}
-                          <div className="flex-1 space-y-3">
-                            {club.openRoles && club.openRoles.length > 0 && (
-                              <div className="space-y-1.5">
-                                <span className="text-[10px] font-black uppercase text-[#20232C] tracking-wide block">
-                                  Departments:
-                                </span>
-                                <div className="flex flex-wrap gap-2">
-                                  <span className="text-[10px] font-extrabold px-3 py-1 bg-white border-2 border-[#20232C] rounded-lg text-[#20232C] neo-shadow-sm">
-                                    Technical
-                                  </span>
-                                </div>
-                              </div>
-                            )}
-                          </div>
-
                           {/* Right drawer: CTA buttons */}
                           <div className="shrink-0 flex items-center gap-3 w-full md:w-auto">
                             {club.status === "Open" ? (
