@@ -20,7 +20,7 @@ export default function HeroSection() {
         >
           <Sparkles className="w-4 h-4 text-[#C86B1F]" />
           <span className="text-xs sm:text-sm font-extrabold tracking-wider uppercase text-[#1C2742]">
-            VIT CHENNAI • OSW COLLABORATIVE MOVEMENT
+            VIT CHENNAI • OFFICE OF STUDENTS' WELFARE
           </span>
         </motion.div>
 

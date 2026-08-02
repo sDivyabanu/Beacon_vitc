@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Compass, Menu, X, ArrowUpRight, ShieldCheck } from "lucide-react";
+import { Compass, Menu, X, ArrowUpRight } from "lucide-react";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -10,7 +10,6 @@ export default function Navbar() {
     { name: "Clubs", href: "#clubs" },
     { name: "Recruitments", href: "#recruitments" },
     { name: "Collaboration", href: "#collaboration" },
-    { name: "Office of Students' Welfare", href: "#osw" },
   ];
 
   return (
@@ -49,12 +48,8 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Right Action & OSW Endorsement */}
+        {/* Right Action */}
         <div className="hidden md:flex items-center gap-3">
-          <div className="hidden xl:flex items-center gap-1.5 px-3 py-1 bg-[#8797A8]/20 border-2 border-[#20232C] rounded-xl text-xs font-bold text-[#1C2742]">
-            <ShieldCheck className="w-4 h-4 text-[#A74C22]" />
-            <span>OSW Approved</span>
-          </div>
           <a
             href="#recruitments"
             className="neo-btn bg-[#C86B1F] text-[#F5EAD8] px-5 py-2 text-sm uppercase tracking-wide hover:bg-[#A74C22]"
