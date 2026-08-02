@@ -3,7 +3,7 @@
 export function CodeChefEmblem() {
   return (
     <img 
-      src="/images/codecheflogo.png" 
+      src="images/codecheflogo.png" 
       alt="CodeChef Logo" 
       className="w-12 h-12 object-contain" 
     />
@@ -13,7 +13,7 @@ export function CodeChefEmblem() {
 export function MicEmblem() {
   return (
     <img 
-      src="/images/miclogo.png" 
+      src="images/miclogo.png" 
       alt="MIC Logo" 
       className="w-12 h-12 object-contain" 
     />
@@ -23,7 +23,7 @@ export function MicEmblem() {
 export function DaoEmblem() {
   return (
     <img 
-      src="/images/daologo.png" 
+      src="images/daologo.png" 
       alt="DAO Logo" 
       className="w-12 h-12 object-contain" 
     />
@@ -33,7 +33,7 @@ export function DaoEmblem() {
 export function CyscomEmblem() {
   return (
     <img 
-      src="/images/cyscomlogo.png" 
+      src="images/cyscomlogo.png" 
       alt="CYSCOM Logo" 
       className="w-12 h-12 object-contain" 
     />
@@ -43,7 +43,7 @@ export function CyscomEmblem() {
 export function AndroidEmblem() {
   return (
     <img 
-      src="/images/Androidlogo.png" 
+      src="images/Androidlogo.png" 
       alt="Android Logo" 
       className="w-12 h-12 object-contain" 
     />
@@ -53,7 +53,7 @@ export function AndroidEmblem() {
 export function BicEmblem() {
   return (
     <img 
-      src="/images/biclogo.png" 
+      src="images/biclogo.png" 
       alt="BIC Logo" 
       className="w-12 h-12 object-contain" 
     />
@@ -63,7 +63,7 @@ export function BicEmblem() {
 export function EnactusEmblem() {
   return (
     <img 
-      src="/images/enactuslogo.png" 
+      src="images/enactuslogo.png" 
       alt="Enactus Logo" 
       className="w-12 h-12 object-contain" 
     />
