@@ -41,7 +41,7 @@ export const CLUBS_DATA: Club[] = [
     status: "Open",
     statusBg: "#C86B1F", // Burnt Orange
     statusText: "#F5EAD8",
-    website: "https://codechef.vitchennai.ac.in",
+    website: "https://www.codechefvitc.in/",
     instagram: "https://instagram.com/codechef_vitc",
     linkedin: "https://linkedin.com/company/codechef-vitc",
     stats: {
@@ -67,9 +67,9 @@ export const CLUBS_DATA: Club[] = [
     status: "Open",
     statusBg: "#C86B1F", // Burnt Orange
     statusText: "#F5EAD8",
-    website: "https://micvitc.in",
-    instagram: "https://instagram.com/mic_vitc",
-    linkedin: "https://linkedin.com/company/mic-vitc",
+    website: "https://www.microsoftinnovations.club/",
+    instagram: "https://www.instagram.com/microsoft.innovations.vitc",
+    linkedin: "https://www.linkedin.com/company/microsoft-innovations-club-vitc/",
     stats: {
       members: "180+",
       events: "20",
@@ -171,9 +171,9 @@ export const CLUBS_DATA: Club[] = [
     status: "Open",
     statusBg: "#C86B1F", // Burnt Orange
     statusText: "#F5EAD8",
-    website: "https://bicvitc.in",
-    instagram: "https://instagram.com/bic_vitc",
-    linkedin: "https://linkedin.com/company/bic-vitc",
+    website: "https://bic-vitcc.github.io/BIC-website/",
+    instagram: "https://www.instagram.com/bic_vitc/",
+    linkedin: "https://www.linkedin.com/company/bic-vitc/",
     stats: {
       members: "130+",
       events: "15",
@@ -181,7 +181,7 @@ export const CLUBS_DATA: Club[] = [
     },
     openRoles: ["Hardware Hacker", "CAD Designer", "Outreach Associate"],
     recruitmentDeadline: "August 28, 2026",
-    recruitmentFormUrl: "https://forms.gle/bic-2026",
+    recruitmentFormUrl: "https://forms.gle/fdRjD6XBKvBszedU9",
   },
   {
     id: "enactus",
@@ -194,19 +194,19 @@ export const CLUBS_DATA: Club[] = [
     bgCard: "#FCE6EC", // Soft Pink
     badgeBg: "#A74C22",
     badgeText: "#F5EAD8",
-    status: "Coming Soon",
-    statusBg: "#8797A8", // Gray
-    statusText: "#20232C",
-    website: "https://enactusvitc.in",
-    instagram: "https://instagram.com/enactus_vitc",
-    linkedin: "https://linkedin.com/company/enactus-vitc",
+    status: "Open",
+    statusBg: "#C86B1F", // Burnt Orange
+    statusText: "#F5EAD8",
+    website: "https://enactusvitc.org/",
+    instagram: "https://www.instagram.com/enactusvitc/",
+    linkedin: "https://www.linkedin.com/company/enactusvitc/",
     stats: {
       members: "100+",
       events: "12",
       founded: "2022",
     },
     openRoles: ["Social Project Coordinator", "Finance Lead", "Content Creator"],
-    recruitmentDeadline: "TBA - Mid September",
-    recruitmentFormUrl: "#",
+    recruitmentDeadline: "Late August 2026",
+    recruitmentFormUrl: "https://recruitment.enactusvitc.in/",
   },
 ];
