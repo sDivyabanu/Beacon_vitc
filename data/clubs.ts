@@ -197,9 +197,9 @@ export const CLUBS_DATA: Club[] = [
     status: "Coming Soon",
     statusBg: "#8797A8", // Gray
     statusText: "#20232C",
-    website: "",
-    instagram: "",
-    linkedin: "",
+    website: "https://enactusvitc.in",
+    instagram: "https://instagram.com/enactus_vitc",
+    linkedin: "https://linkedin.com/company/enactus-vitc",
     stats: {
       members: "100+",
       events: "12",
