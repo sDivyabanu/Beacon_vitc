@@ -34,7 +34,6 @@ export default function ClubsSection() {
   const wheelRef = useRef<HTMLDivElement>(null);
   const dragStartAngle = useRef(0);
   const dragStartRotation = useRef(0);
-  const lastScrollTime = useRef(0);
   const dragHasMoved = useRef(false);
 
   useEffect(() => {
@@ -63,10 +62,13 @@ export default function ClubsSection() {
     return CLUBS_DATA.findIndex((c) => c.id === selectedClub.id);
   };
 
-  const selectIndex = (index: number) => {
+  const selectIndex = (index: number, shouldOpenDetails = false) => {
     const safeIndex = (index + TOTAL_CLUBS) % TOTAL_CLUBS;
     const club = CLUBS_DATA[safeIndex];
     setSelectedClub(club);
+    if (shouldOpenDetails) {
+      setModalClub(club);
+    }
     
     // Shortest path to top focal point (0 degrees)
     const targetRotation = -safeIndex * ANGLE_STEP;
@@ -78,25 +80,6 @@ export default function ClubsSection() {
     if (diff < -180) diff += 360;
     
     setRotationOffset((prev) => prev + diff);
-  };
-
-  const handleWheel = (e: React.WheelEvent) => {
-    const now = Date.now();
-    if (now - lastScrollTime.current < 650) {
-      e.preventDefault();
-      return;
-    }
-    
-    if (Math.abs(e.deltaY) > 8) {
-      e.preventDefault();
-      lastScrollTime.current = now;
-      const currentIdx = getSelectedIdx();
-      if (e.deltaY > 0) {
-        selectIndex(currentIdx + 1);
-      } else {
-        selectIndex(currentIdx - 1);
-      }
-    }
   };
 
   const getAngle = (clientX: number, clientY: number) => {
@@ -151,7 +134,6 @@ export default function ClubsSection() {
     <section
       id="clubs"
       ref={sectionRef}
-      onWheel={handleWheel}
       className="relative min-h-screen py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b-4 border-[#20232C] overflow-hidden transition-colors duration-700 ease-in-out select-none"
       style={{ backgroundColor: bgColor }}
     >
@@ -171,7 +153,7 @@ export default function ClubsSection() {
             Choose Your Community
           </h2>
           <p className="text-[10px] md:text-xs font-bold text-[#A74C22]/70 uppercase tracking-widest pointer-events-none">
-            Drag to Rotate • Scroll to Cycle
+            Drag to Rotate • Tap a Circle for Details
           </p>
         </div>
 
@@ -234,7 +216,7 @@ export default function ClubsSection() {
                     style={{ opacity }}
                   >
                     <button
-                      onClick={() => selectIndex(index)}
+                      onClick={() => selectIndex(index, true)}
                       className={`
                         flex flex-col items-center justify-center gap-1.5 
                         w-[76px] h-[76px] md:w-24 md:h-24 rounded-full 

@@ -9,7 +9,6 @@ export default function Navbar() {
   const navLinks = [
     { name: "Clubs", href: "#clubs" },
     { name: "Recruitments", href: "#recruitments" },
-    { name: "Collaboration", href: "#collaboration" },
   ];
 
   return (
