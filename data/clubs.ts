@@ -38,10 +38,10 @@ export const CLUBS_DATA: Club[] = [
     bgCard: "#D9A441", // Light Ochre
     badgeBg: "#1C2742",
     badgeText: "#F5EAD8",
-    status: "Open",
-    statusBg: "#C86B1F", // Burnt Orange
+    status: "Closed",
+    statusBg: "#4D627D", // Slate Blue
     statusText: "#F5EAD8",
-    website: "https://www.codechefvitc.in/",
+    website: "https://codechef.vitchennai.ac.in",
     instagram: "https://instagram.com/codechef_vitc",
     linkedin: "https://linkedin.com/company/codechef-vitc",
     stats: {
@@ -49,7 +49,7 @@ export const CLUBS_DATA: Club[] = [
       events: "32",
       founded: "2019",
     },
-    openRoles: ["Problem Setter", "Competitive Coding Mentor", "PR & Outreach"],
+    openRoles: ["CP", "Web Dev"],
     recruitmentDeadline: "August 20, 2026",
     recruitmentFormUrl: "https://forms.gle/codechef-2026",
   },
@@ -64,12 +64,12 @@ export const CLUBS_DATA: Club[] = [
     bgCard: "#EFE4D2", // Cream
     badgeBg: "#C86B1F",
     badgeText: "#F5EAD8",
-    status: "Open",
-    statusBg: "#C86B1F", // Burnt Orange
+    status: "Closed",
+    statusBg: "#4D627D", // Slate Blue
     statusText: "#F5EAD8",
-    website: "https://www.microsoftinnovations.club/",
-    instagram: "https://www.instagram.com/microsoft.innovations.vitc",
-    linkedin: "https://www.linkedin.com/company/microsoft-innovations-club-vitc/",
+    website: "https://micvitc.in",
+    instagram: "https://instagram.com/mic_vitc",
+    linkedin: "https://linkedin.com/company/mic-vitc",
     stats: {
       members: "180+",
       events: "20",
@@ -116,8 +116,8 @@ export const CLUBS_DATA: Club[] = [
     bgCard: "#E7DBEC", // Soft Dark Purple / Cyber
     badgeBg: "#20232C",
     badgeText: "#F5EAD8",
-    status: "Open",
-    statusBg: "#C86B1F", // Burnt Orange
+    status: "Closed",
+    statusBg: "#4D627D", // Slate Blue
     statusText: "#F5EAD8",
     website: "https://cyscomvit.com/",
     instagram: "https://www.instagram.com/cyscomvit",
@@ -142,9 +142,9 @@ export const CLUBS_DATA: Club[] = [
     bgCard: "#ECE7FC", // Soft Violet
     badgeBg: "#A74C22",
     badgeText: "#F5EAD8",
-    status: "Coming Soon",
-    statusBg: "#8797A8", // Gray / Dust Blue
-    statusText: "#20232C",
+    status: "Closed",
+    statusBg: "#4D627D", // Slate Blue
+    statusText: "#F5EAD8",
     website: "https://androidclub.in",
     instagram: "https://www.instagram.com/androidvitc",
     linkedin: "https://www.linkedin.com/company/android-club-vitc/",
@@ -159,7 +159,7 @@ export const CLUBS_DATA: Club[] = [
   },
   {
     id: "bic",
-    name: "Beacon Innovation Cell",
+    name: "Business Innovation Community",
     shortName: "BIC",
     domain: "Ideation & Prototyping",
     tagline: "Incubating ideas and building hardware-software solutions.",
@@ -168,12 +168,12 @@ export const CLUBS_DATA: Club[] = [
     bgCard: "#E3ECF5", // Light Blue
     badgeBg: "#C86B1F",
     badgeText: "#F5EAD8",
-    status: "Open",
-    statusBg: "#C86B1F", // Burnt Orange
+    status: "Closed",
+    statusBg: "#4D627D", // Slate Blue
     statusText: "#F5EAD8",
-    website: "https://bic-vitcc.github.io/BIC-website/",
-    instagram: "https://www.instagram.com/bic_vitc/",
-    linkedin: "https://www.linkedin.com/company/bic-vitc/",
+    website: "https://bicvitc.in",
+    instagram: "https://instagram.com/bic_vitc",
+    linkedin: "https://linkedin.com/company/bic-vitc",
     stats: {
       members: "130+",
       events: "15",
@@ -181,7 +181,7 @@ export const CLUBS_DATA: Club[] = [
     },
     openRoles: ["Hardware Hacker", "CAD Designer", "Outreach Associate"],
     recruitmentDeadline: "August 28, 2026",
-    recruitmentFormUrl: "https://forms.gle/fdRjD6XBKvBszedU9",
+    recruitmentFormUrl: "https://forms.gle/bic-2026",
   },
   {
     id: "enactus",
@@ -194,8 +194,8 @@ export const CLUBS_DATA: Club[] = [
     bgCard: "#FCE6EC", // Soft Pink
     badgeBg: "#A74C22",
     badgeText: "#F5EAD8",
-    status: "Open",
-    statusBg: "#C86B1F", // Burnt Orange
+    status: "Closed",
+    statusBg: "#4D627D", // Slate Blue
     statusText: "#F5EAD8",
     website: "https://enactusvitc.org/",
     instagram: "https://www.instagram.com/enactusvitc/",
@@ -206,7 +206,7 @@ export const CLUBS_DATA: Club[] = [
       founded: "2022",
     },
     openRoles: ["Social Project Coordinator", "Finance Lead", "Content Creator"],
-    recruitmentDeadline: "Late August 2026",
+    recruitmentDeadline: "August 30, 2026",
     recruitmentFormUrl: "https://recruitment.enactusvitc.in/",
   },
 ];

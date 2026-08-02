@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CLUBS_DATA, RecruitmentStatus } from "@/data/clubs";
-import { Clock, ArrowUpRight, CheckCircle, AlertCircle, HelpCircle, Calendar } from "lucide-react";
+import { Clock, ArrowUpRight, CheckCircle, AlertCircle, HelpCircle } from "lucide-react";
 import { getClubEmblem } from "./ClubEmblems";
 
 export default function RecruitmentSection() {
@@ -137,30 +137,18 @@ export default function RecruitmentSection() {
                       >
                         <div className="p-4 md:p-6 flex flex-col md:flex-row gap-6 justify-between items-start md:items-center">
                           
-                          {/* Left drawer: tracks list & deadline */}
+                          {/* Left drawer: tracks list */}
                           <div className="flex-1 space-y-3">
                             {club.openRoles && club.openRoles.length > 0 && (
                               <div className="space-y-1.5">
                                 <span className="text-[10px] font-black uppercase text-[#20232C] tracking-wide block">
-                                  Available Recruitment Tracks:
+                                  Departments:
                                 </span>
                                 <div className="flex flex-wrap gap-2">
-                                  {club.openRoles.map((role) => (
-                                    <span
-                                      key={role}
-                                      className="text-[10px] font-extrabold px-3 py-1 bg-white border-2 border-[#20232C] rounded-lg text-[#20232C] neo-shadow-sm"
-                                    >
-                                      {role}
-                                    </span>
-                                  ))}
+                                  <span className="text-[10px] font-extrabold px-3 py-1 bg-white border-2 border-[#20232C] rounded-lg text-[#20232C] neo-shadow-sm">
+                                    Technical
+                                  </span>
                                 </div>
-                              </div>
-                            )}
-
-                            {club.recruitmentDeadline && (
-                              <div className="flex items-center gap-1.5 text-xs font-bold text-[#A74C22]">
-                                <Calendar className="w-4 h-4" />
-                                <span>Deadline: {club.recruitmentDeadline}</span>
                               </div>
                             )}
                           </div>
