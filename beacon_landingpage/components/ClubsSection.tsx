@@ -348,10 +348,10 @@ export default function ClubsSection() {
                           <Globe className="w-3 h-3 md:w-3.5 md:h-3.5" strokeWidth={2.5} />
                         </a>
                         <a href={selectedClub.instagram} target="_blank" rel="noreferrer" className="w-6 h-6 md:w-8 md:h-8 bg-white border-2 border-[#20232C] rounded-lg flex items-center justify-center neo-shadow-sm hover:bg-[#C86B1F] hover:text-white transition-colors">
-                          <InstagramIcon className="w-3 h-3 md:w-3.5 md:h-3.5" strokeWidth={2.5} />
+                          <InstagramIcon className="w-3 h-3 md:w-3.5 md:h-3.5" />
                         </a>
                         <a href={selectedClub.linkedin} target="_blank" rel="noreferrer" className="w-6 h-6 md:w-8 md:h-8 bg-white border-2 border-[#20232C] rounded-lg flex items-center justify-center neo-shadow-sm hover:bg-[#C86B1F] hover:text-white transition-colors">
-                          <LinkedinIcon className="w-3 h-3 md:w-3.5 md:h-3.5" strokeWidth={2.5} />
+                          <LinkedinIcon className="w-3 h-3 md:w-3.5 md:h-3.5" />
                         </a>
                       </div>
                       <button

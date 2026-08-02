@@ -108,27 +108,8 @@ export default function RecruitmentSection() {
                       </div>
                     </div>
 
-                    {/* Center Column: Open tracks snapshot */}
-                    <div className="hidden md:flex flex-wrap gap-1.5 max-w-[300px]">
-                      {club.openRoles && club.openRoles.length > 0 ? (
-                        club.openRoles.slice(0, 2).map((role) => (
-                          <span 
-                            key={role} 
-                            className="text-[9px] font-extrabold px-2 py-0.5 bg-white border border-[#20232C]/30 text-[#20232C] rounded"
-                          >
-                            {role}
-                          </span>
-                        ))
-                      ) : (
-                        <span className="text-[10px] font-bold text-[#4D627D]/60 uppercase">No Tracks Open</span>
-                      )}
-                      {club.openRoles && club.openRoles.length > 2 && (
-                        <span className="text-[9px] font-black text-[#C86B1F]">+{club.openRoles.length - 2} more</span>
-                      )}
-                    </div>
-
                     {/* Right Side: Status Badge + Toggle */}
-                    <div className="flex items-center justify-between sm:justify-end gap-3 sm:w-auto">
+                    <div className="flex items-center justify-between sm:justify-end gap-3 sm:w-auto ml-auto">
                       <span
                         className="text-[10px] font-black uppercase px-3 py-1.5 rounded-lg border-2 border-[#20232C] flex items-center gap-1 neo-shadow-sm"
                         style={{ backgroundColor: statusBg, color: statusText }}
