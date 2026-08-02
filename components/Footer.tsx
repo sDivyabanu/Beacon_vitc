@@ -1,7 +1,6 @@
 "use client";
 
-import { Compass, Mail, ShieldCheck, ArrowUp } from "lucide-react";
-import { InstagramIcon, LinkedinIcon } from "./SocialIcons";
+import { Compass, ShieldCheck, ArrowUp } from "lucide-react";
 
 export default function Footer() {
   const scrollToTop = (e: React.MouseEvent) => {
@@ -61,53 +60,13 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="https://vitchennai.ac.in" target="_blank" rel="noreferrer" className="hover:text-[#C86B1F] transition-colors flex items-center gap-1">
+                <a href="https://chennai.vit.ac.in/" target="_blank" rel="noreferrer" className="hover:text-[#C86B1F] transition-colors flex items-center gap-1">
                   <span>→</span> <span>VIT Chennai</span>
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Col 3: Social & Contact */}
-          <div className="md:col-span-3 space-y-4">
-            <h4 className="text-xs font-black uppercase tracking-widest text-[#C86B1F] border-b-2 border-[#C86B1F]/30 pb-1">
-              Connect With Us
-            </h4>
-            <div className="flex items-center gap-3">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noreferrer"
-                className="w-11 h-11 bg-[#EFE4D2] border-3 border-[#20232C] rounded-xl flex items-center justify-center hover:bg-[#C86B1F] text-[#20232C] hover:text-[#EFE4D2] shadow-[3px_3px_0px_0px_#C86B1F] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
-                aria-label="Instagram"
-              >
-                <InstagramIcon className="w-5 h-5 stroke-[2.5]" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                className="w-11 h-11 bg-[#EFE4D2] border-3 border-[#20232C] rounded-xl flex items-center justify-center hover:bg-[#C86B1F] text-[#20232C] hover:text-[#EFE4D2] shadow-[3px_3px_0px_0px_#C86B1F] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
-                aria-label="LinkedIn"
-              >
-                <LinkedinIcon className="w-5 h-5 stroke-[2.5]" />
-              </a>
-              <a
-                href="mailto:beacon@vitchennai.ac.in"
-                className="w-11 h-11 bg-[#EFE4D2] border-3 border-[#20232C] rounded-xl flex items-center justify-center hover:bg-[#C86B1F] text-[#20232C] hover:text-[#EFE4D2] shadow-[3px_3px_0px_0px_#C86B1F] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
-                aria-label="Email"
-              >
-                <Mail className="w-5 h-5 stroke-[2.5]" />
-              </a>
-            </div>
-
-            {/* Neo-brutalist graphic block decoration */}
-            <div className="pt-2 flex gap-1.5 bg-[#EFE4D2]/5 p-2 rounded-xl border border-[#EFE4D2]/10 max-w-[120px] justify-center">
-              <div className="w-3 h-3 bg-[#C86B1F] rounded-full" />
-              <div className="w-3 h-3 bg-[#EFE4D2] rotate-45" />
-              <div className="w-5 h-3 bg-[#EFE4D2]/30 rounded-sm" />
-            </div>
-          </div>
         </div>
 
         {/* Bottom Rights & Back to Top */}

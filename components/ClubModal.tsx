@@ -75,7 +75,7 @@ export default function ClubModal({ club, onClose }: ClubModalProps) {
           </div>
 
           {/* Open Roles & Recruitment Section */}
-          {club.openRoles && club.openRoles.length > 0 && (
+          {club.status === "Open" && club.openRoles && club.openRoles.length > 0 && (
             <div className="mb-6 bg-[#E6D8C1] border-3 border-[#20232C] rounded-2xl p-4 neo-shadow-sm">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-xs font-black uppercase text-[#20232C]">

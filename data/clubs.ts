@@ -135,7 +135,7 @@ export const CLUBS_DATA: Club[] = [
     id: "android-club",
     name: "Android Club",
     shortName: "Android",
-    domain: "App Development & Kotlin",
+    domain: "Software Development",
     tagline: "Building elegant, high-performance mobile applications.",
     description:
       "A community of developers, UI/UX designers, and mobile enthusiasts creating beautiful, production-grade Android apps using Kotlin, Jetpack Compose, and Flutter.",
@@ -168,8 +168,8 @@ export const CLUBS_DATA: Club[] = [
     bgCard: "#E3ECF5", // Light Blue
     badgeBg: "#C86B1F",
     badgeText: "#F5EAD8",
-    status: "Closed",
-    statusBg: "#4D627D", // Slate Blue
+    status: "Open",
+    statusBg: "#C86B1F", // Burnt Orange
     statusText: "#F5EAD8",
     website: "https://bicvitc.in",
     instagram: "https://instagram.com/bic_vitc",
@@ -181,7 +181,7 @@ export const CLUBS_DATA: Club[] = [
     },
     openRoles: ["Hardware Hacker", "CAD Designer", "Outreach Associate"],
     recruitmentDeadline: "August 28, 2026",
-    recruitmentFormUrl: "https://forms.gle/bic-2026",
+    recruitmentFormUrl: "https://forms.gle/fdRjD6XBKvBszedU9",
   },
   {
     id: "enactus",
@@ -194,8 +194,8 @@ export const CLUBS_DATA: Club[] = [
     bgCard: "#FCE6EC", // Soft Pink
     badgeBg: "#A74C22",
     badgeText: "#F5EAD8",
-    status: "Closed",
-    statusBg: "#4D627D", // Slate Blue
+    status: "Open",
+    statusBg: "#C86B1F", // Burnt Orange
     statusText: "#F5EAD8",
     website: "https://enactusvitc.org/",
     instagram: "https://www.instagram.com/enactusvitc/",
