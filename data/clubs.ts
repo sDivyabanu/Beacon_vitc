@@ -103,7 +103,7 @@ export const CLUBS_DATA: Club[] = [
     },
     openRoles: ["Smart Contract Auditor", "Web3 Frontend Developer", "Community Builder"],
     recruitmentDeadline: "August 25, 2026",
-    recruitmentFormUrl: "https://forms.gle/dao-2026",
+    recruitmentFormUrl: "https://tally.so/r/aQXXjB",
   },
   {
     id: "cyscom",
@@ -197,9 +197,9 @@ export const CLUBS_DATA: Club[] = [
     status: "Coming Soon",
     statusBg: "#8797A8", // Gray
     statusText: "#20232C",
-    website: "https://enactusvitc.in",
-    instagram: "https://instagram.com/enactus_vitc",
-    linkedin: "https://linkedin.com/company/enactus-vitc",
+    website: "",
+    instagram: "",
+    linkedin: "",
     stats: {
       members: "100+",
       events: "12",
