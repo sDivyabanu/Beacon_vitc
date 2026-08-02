@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description:
     "BEACON is a collaborative initiative uniting seven premier student clubs at VIT Chennai. Discover communities, events, recruitments, and endless possibilities.",
   icons: {
-    icon: "images/beacon.jpeg",
+    icon: "images/beacon.png",
   },
   keywords: [
     "BEACON",
